@@ -1,0 +1,10 @@
+tmp
+dist
+build
+*.swp
+*.swo
+*~
+*.so
+*.o
+nbproject
+build.xml

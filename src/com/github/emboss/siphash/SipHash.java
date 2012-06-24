@@ -11,7 +11,7 @@ public class SipHash {
         int iter = data.length / 8;
         
         for(int i=0; i < iter; i++) {
-            m = UnsignedInt64.bin2intOffset(data, i * 8);
+            m = UnsignedInt64.binToIntOffset(data, i * 8);
             s.processBlock(m);
         }
         

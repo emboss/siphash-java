@@ -14,10 +14,10 @@ public class SipKey {
     }
     
     long getLeftHalf() {
-       return UnsignedInt64.bin2intOffset(key, 0); 
+       return UnsignedInt64.binToIntOffset(key, 0); 
     }
     
     long getRightHalf() {
-        return UnsignedInt64.bin2intOffset(key, 8); 
+        return UnsignedInt64.binToIntOffset(key, 8); 
     }
 }

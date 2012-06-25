@@ -85,19 +85,21 @@ public class SipHash {
             v2 = UnsignedInt64.rotateLeft(v2, 32);
         }
         
-        public void processBlock(long m) {
-            v3 ^= m;
-            for (int i=0; i < 2; i++) {
+        private void compressTimes(int times) {
+            for (int i=0; i < times; i++) {
                 compress();
             }
+        }
+        
+        public void processBlock(long m) {
+            v3 ^= m;
+            compressTimes(2);
             v0 ^= m;
         }
         
         public void finish() {
             v2 ^= 0xff;
-            for (int i=0; i < 4; i++) {
-                compress();
-            }
+            compressTimes(4);
         }
         
         public long digest() {

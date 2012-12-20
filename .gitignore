@@ -1,10 +1,15 @@
 tmp
 dist
 build
+target
 *.swp
 *.swo
 *~
 *.so
 *.o
+*.iml
+*.idea
+*.class
+*.jar
 nbproject
 build.xml

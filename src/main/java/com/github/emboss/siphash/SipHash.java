@@ -14,32 +14,32 @@ public class SipHash {
             m = UnsignedInt64.binToIntOffset(data, i * 8);
             s.processBlock(m);
         }
-        
+
         m = lastBlock(data, iter);
         s.processBlock(m);
         s.finish();
         return s.digest();
     }
-    
+
     private static long lastBlock(byte[] data, int iter) {
-        long last = ((long) data.length) << 56;
+        long last = (((long) data.length) & 0xff) << 56;
         int off = iter * 8;
 
         switch (data.length % 8) {
             case 7: 
-                last |= ((long) data[off + 6]) << 48;
+                last |= (((long) data[off + 6]) & 0xff) << 48;
             case 6:
-                last |= ((long) data[off + 5]) << 40;
+                last |= (((long) data[off + 5]) & 0xff) << 40;
             case 5:
-                last |= ((long) data[off + 4]) << 32;
+                last |= (((long) data[off + 4]) & 0xff) << 32;
             case 4:
-                last |= ((long) data[off + 3]) << 24;
+                last |= (((long) data[off + 3]) & 0xff) << 24;
             case 3:
-                last |= ((long) data[off + 2]) << 16;
+                last |= (((long) data[off + 2]) & 0xff) << 16;
             case 2:
-                last |= ((long) data[off + 1]) << 8;
+                last |= (((long) data[off + 1]) & 0xff) << 8;
             case 1:
-                last |= (long) data[off];
+                last |= ((long) data[off]) & 0xff;
                 break;
             case 0:
                 break;

@@ -14,13 +14,13 @@ public class SipHash {
             m = UnsignedInt64.binToIntOffset(data, i * 8);
             s.processBlock(m);
         }
-
+        
         m = lastBlock(data, iter);
         s.processBlock(m);
         s.finish();
         return s.digest();
     }
-
+    
     private static long lastBlock(byte[] data, int iter) {
         long last = ((long) data.length) << 56;
         int off = iter * 8;

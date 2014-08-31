@@ -22,7 +22,7 @@ public class SipHash {
     }
 
     private static long lastBlock(byte[] data, int iter) {
-        long last = (((long) data.length) & 0xff) << 56;
+        long last = ((long) data.length) << 56;
         int off = iter * 8;
 
         switch (data.length % 8) {

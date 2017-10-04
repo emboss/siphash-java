@@ -43,7 +43,7 @@ public class SipHashTest {
     @Test
     public void spec_codec_testC() {
         long digest = SipHash.digest(SPEC_KEY, SPEC_MSG_CODEC);
-        assertEquals(0xa129149be45e5L, digest);
+        assertEquals(0xa129dd149be45e5L, digest);
     }
     
     @Test

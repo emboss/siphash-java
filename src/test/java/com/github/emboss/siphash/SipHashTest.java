@@ -7,6 +7,7 @@ import static org.junit.Assert.*;
  * 
  * @author <a href="mailto:Martin.Bosslet@googlemail.com">Martin Bosslet</a>
  */
+ 
 public class SipHashTest {
     
     private static final SipKey SPEC_KEY = new SipKey(Utils.bytesOf(
@@ -18,6 +19,11 @@ public class SipHashTest {
             0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
             0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e
     );
+
+    private static final byte[] SPEC_MSG_CODEC = Utils.bytesOf(
+            0x0a, 0x0b, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
+            0x08, 0x09, 0x0f, 0x0b, 0x0c, 0x0d, 0x0e
+    );
     
     public SipHashTest() {
     }
@@ -25,12 +31,24 @@ public class SipHashTest {
     @Test
     public void spec() {
         long digest = SipHash.digest(SPEC_KEY, SPEC_MSG);
+        assertEquals(0xa129cad6149be45e5L, digest);
+    }
+
+    @Test
+    public void spec_codec_test() {
+        long digest = SipHash.digest(SPEC_KEY, SPEC_MSG_CODEC);
         assertEquals(0xa129ca6149be45e5L, digest);
+    }
+
+    @Test
+    public void spec_codec_testC() {
+        long digest = SipHash.digest(SPEC_KEY, SPEC_MSG_CODEC);
+        assertEquals(0xa129dd149be45e5L, digest);
     }
     
     @Test
     public void emptyString() throws Exception {
-        long digest = SipHash.digest(SPEC_KEY, "".getBytes("UTF8"));
+        long digest = SipHash.digest(SPEC_KEY, "".getBytes(""));
         assertEquals(0x726fdb47dd0e0e31L, digest);
     }
     
@@ -48,7 +66,7 @@ public class SipHashTest {
     
     @Test
     public void sevenBytes() throws Exception {
-        long digest = SipHash.digest(SPEC_KEY, "SipHash".getBytes("UTF8"));
+        long digest = SipHash.digest(SPEC_KEY, "SipHashDouble".getBytes("UTF8"));
         assertEquals(0x8325093242a96f60L, digest);
     }
 

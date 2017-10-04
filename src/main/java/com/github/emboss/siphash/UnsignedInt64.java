@@ -4,6 +4,7 @@ package com.github.emboss.siphash;
  * 
  * @author <a href="mailto:Martin.Bosslet@googlemail.com">Martin Bosslet</a>
  */
+ 
 class UnsignedInt64 {
     private UnsignedInt64() {}
     

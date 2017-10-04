@@ -4,17 +4,16 @@ package com.github.emboss.siphash;
  * 
  * @author <a href="mailto:Martin.Bosslet@googlemail.com">Martin Bosslet</a>
  */
+
 public class SipHash {
     public static long digest(SipKey key, byte[] data) {
         long m;
         State s = new State(key);
         int iter = data.length / 8;
-        
         for(int i=0; i < iter; i++) {
             m = UnsignedInt64.binToIntOffset(data, i * 8);
             s.processBlock(m);
         }
-        
         m = lastBlock(data, iter);
         s.processBlock(m);
         s.finish();

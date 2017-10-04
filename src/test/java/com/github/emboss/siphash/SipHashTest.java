@@ -31,7 +31,7 @@ public class SipHashTest {
     @Test
     public void spec() {
         long digest = SipHash.digest(SPEC_KEY, SPEC_MSG);
-        assertEquals(0xa129ca6149be45e5L, digest);
+        assertEquals(0xa129cad6149be45e5L, digest);
     }
 
     @Test

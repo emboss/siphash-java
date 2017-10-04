@@ -33,6 +33,12 @@ public class SipHashTest {
         long digest = SipHash.digest(SPEC_KEY, SPEC_MSG);
         assertEquals(0xa129ca6149be45e5L, digest);
     }
+
+    @Test
+    public void spec_codec() {
+        long digest = SipHash.digest(SPEC_KEY, SPEC_MSG_CODEC);
+        assertEquals(0xa129ca6149be45e5L, digest);
+    }
     
     @Test
     public void emptyString() throws Exception {

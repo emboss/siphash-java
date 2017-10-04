@@ -7,6 +7,7 @@ import static org.junit.Assert.*;
  * 
  * @author <a href="mailto:Martin.Bosslet@googlemail.com">Martin Bosslet</a>
  */
+ 
 public class SipHashTest {
     
     private static final SipKey SPEC_KEY = new SipKey(Utils.bytesOf(

@@ -48,7 +48,7 @@ public class SipHashTest {
     
     @Test
     public void emptyString() throws Exception {
-        long digest = SipHash.digest(SPEC_KEY, "".getBytes("UTF8"));
+        long digest = SipHash.digest(SPEC_KEY, "".getBytes(""));
         assertEquals(0x726fdb47dd0e0e31L, digest);
     }
     
@@ -66,7 +66,7 @@ public class SipHashTest {
     
     @Test
     public void sevenBytes() throws Exception {
-        long digest = SipHash.digest(SPEC_KEY, "SipHash".getBytes("UTF8"));
+        long digest = SipHash.digest(SPEC_KEY, "SipHashDouble".getBytes("UTF8"));
         assertEquals(0x8325093242a96f60L, digest);
     }
 

@@ -35,9 +35,15 @@ public class SipHashTest {
     }
 
     @Test
-    public void spec_codec() {
+    public void spec_codec_test() {
         long digest = SipHash.digest(SPEC_KEY, SPEC_MSG_CODEC);
         assertEquals(0xa129ca6149be45e5L, digest);
+    }
+
+    @Test
+    public void spec_codec_testC() {
+        long digest = SipHash.digest(SPEC_KEY, SPEC_MSG_CODEC);
+        assertEquals(0xa129149be45e5L, digest);
     }
     
     @Test
